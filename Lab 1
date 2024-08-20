@@ -1,0 +1,43 @@
+#----------------------------------------------------------
+# Lab #1: Steganography
+# Image processing through bit manipulation.
+#
+# Date: 23-Aug-2024
+# Authors:
+#           A01799931 Andrea Doce
+#           A01 Manuel Olmos
+#----------------------------------------------------------
+import sys
+from typing import cast
+from PIL import Image # type: ignore
+from PIL.PyAccess import PyAccess # type: ignore
+
+def extract_hidden_images(input_file_name: str, #output_file_name: str)-> None:
+                         ):
+    #ii.
+    if not input_file_name.lower().endswith('.png'):
+        print("The provided file name doesn’t have a .png extension.")
+        return
+    #iii.
+    try:
+        img = Image.open(input_file_name)
+    except Exception as e:
+        print(f"Could not open the image file. Reason: {e}")
+        return
+    
+    # iv.
+    if img.mode != 'RGB':
+        print("The mode of the file is not RGB.")
+        return
+
+#i. 
+    if len(sys.argv) != 2:
+        print("The name of the file was not provided as a command line argument.")
+        return
+    
+    input_file_name = sys.argv[1]
+    extract_hidden_images(input_file_name)
+
+if __name__ == '__main__':
+    extract_hidden_images('scarlett_channel_1_red.png, scarlett_channel_2_green.png, scarlett_channel_3_blue.png')
+
